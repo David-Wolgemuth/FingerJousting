@@ -8,20 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		638201C51C49F1C5005CF368 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638201C41C49F1C5005CF368 /* AppDelegate.swift */; };
-		638201C71C49F1C5005CF368 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638201C61C49F1C5005CF368 /* ViewController.swift */; };
+		638201C71C49F1C5005CF368 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638201C61C49F1C5005CF368 /* GameViewController.swift */; };
 		638201CA1C49F1C5005CF368 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638201C81C49F1C5005CF368 /* Main.storyboard */; };
 		638201CC1C49F1C5005CF368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 638201CB1C49F1C5005CF368 /* Assets.xcassets */; };
 		638201CF1C49F1C5005CF368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638201CD1C49F1C5005CF368 /* LaunchScreen.storyboard */; };
+		638201DB1C49FB16005CF368 /* 0-fingers.png in Resources */ = {isa = PBXBuildFile; fileRef = 638201D61C49FB16005CF368 /* 0-fingers.png */; };
+		638201DC1C49FB16005CF368 /* 1-fingers.png in Resources */ = {isa = PBXBuildFile; fileRef = 638201D71C49FB16005CF368 /* 1-fingers.png */; };
+		638201DD1C49FB16005CF368 /* 2-fingers.png in Resources */ = {isa = PBXBuildFile; fileRef = 638201D81C49FB16005CF368 /* 2-fingers.png */; };
+		638201DE1C49FB16005CF368 /* 3-fingers.png in Resources */ = {isa = PBXBuildFile; fileRef = 638201D91C49FB16005CF368 /* 3-fingers.png */; };
+		638201DF1C49FB16005CF368 /* 4-fingers.png in Resources */ = {isa = PBXBuildFile; fileRef = 638201DA1C49FB16005CF368 /* 4-fingers.png */; };
+		638201E21C49FDBE005CF368 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638201E11C49FDBE005CF368 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		638201C11C49F1C5005CF368 /* FingerJousting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FingerJousting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		638201C41C49F1C5005CF368 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		638201C61C49F1C5005CF368 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		638201C61C49F1C5005CF368 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		638201C91C49F1C5005CF368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		638201CB1C49F1C5005CF368 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		638201CE1C49F1C5005CF368 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		638201D01C49F1C5005CF368 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		638201D61C49FB16005CF368 /* 0-fingers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "0-fingers.png"; sourceTree = "<group>"; };
+		638201D71C49FB16005CF368 /* 1-fingers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-fingers.png"; sourceTree = "<group>"; };
+		638201D81C49FB16005CF368 /* 2-fingers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-fingers.png"; sourceTree = "<group>"; };
+		638201D91C49FB16005CF368 /* 3-fingers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3-fingers.png"; sourceTree = "<group>"; };
+		638201DA1C49FB16005CF368 /* 4-fingers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4-fingers.png"; sourceTree = "<group>"; };
+		638201E11C49FDBE005CF368 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +67,27 @@
 			isa = PBXGroup;
 			children = (
 				638201C41C49F1C5005CF368 /* AppDelegate.swift */,
-				638201C61C49F1C5005CF368 /* ViewController.swift */,
+				638201C61C49F1C5005CF368 /* GameViewController.swift */,
 				638201C81C49F1C5005CF368 /* Main.storyboard */,
+				638201E11C49FDBE005CF368 /* Game.swift */,
 				638201CB1C49F1C5005CF368 /* Assets.xcassets */,
+				638201E01C49FB2B005CF368 /* Images */,
 				638201CD1C49F1C5005CF368 /* LaunchScreen.storyboard */,
 				638201D01C49F1C5005CF368 /* Info.plist */,
 			);
 			path = FingerJousting;
+			sourceTree = "<group>";
+		};
+		638201E01C49FB2B005CF368 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				638201D61C49FB16005CF368 /* 0-fingers.png */,
+				638201D71C49FB16005CF368 /* 1-fingers.png */,
+				638201D81C49FB16005CF368 /* 2-fingers.png */,
+				638201D91C49FB16005CF368 /* 3-fingers.png */,
+				638201DA1C49FB16005CF368 /* 4-fingers.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,9 +148,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				638201DD1C49FB16005CF368 /* 2-fingers.png in Resources */,
+				638201DB1C49FB16005CF368 /* 0-fingers.png in Resources */,
 				638201CF1C49F1C5005CF368 /* LaunchScreen.storyboard in Resources */,
 				638201CC1C49F1C5005CF368 /* Assets.xcassets in Resources */,
+				638201DF1C49FB16005CF368 /* 4-fingers.png in Resources */,
 				638201CA1C49F1C5005CF368 /* Main.storyboard in Resources */,
+				638201DE1C49FB16005CF368 /* 3-fingers.png in Resources */,
+				638201DC1C49FB16005CF368 /* 1-fingers.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +166,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				638201C71C49F1C5005CF368 /* ViewController.swift in Sources */,
+				638201C71C49F1C5005CF368 /* GameViewController.swift in Sources */,
+				638201E21C49FDBE005CF368 /* Game.swift in Sources */,
 				638201C51C49F1C5005CF368 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
