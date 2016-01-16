@@ -18,6 +18,7 @@
 		638201DE1C49FB16005CF368 /* 3-fingers.png in Resources */ = {isa = PBXBuildFile; fileRef = 638201D91C49FB16005CF368 /* 3-fingers.png */; };
 		638201DF1C49FB16005CF368 /* 4-fingers.png in Resources */ = {isa = PBXBuildFile; fileRef = 638201DA1C49FB16005CF368 /* 4-fingers.png */; };
 		638201E21C49FDBE005CF368 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638201E11C49FDBE005CF368 /* Game.swift */; };
+		63AE9AF11C4B018100FC187D /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AE9AF01C4B018100FC187D /* UsersTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		638201D91C49FB16005CF368 /* 3-fingers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3-fingers.png"; sourceTree = "<group>"; };
 		638201DA1C49FB16005CF368 /* 4-fingers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4-fingers.png"; sourceTree = "<group>"; };
 		638201E11C49FDBE005CF368 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		63AE9AF01C4B018100FC187D /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				638201C41C49F1C5005CF368 /* AppDelegate.swift */,
 				638201C61C49F1C5005CF368 /* GameViewController.swift */,
 				638201C81C49F1C5005CF368 /* Main.storyboard */,
+				63AE9AF01C4B018100FC187D /* UsersTableViewController.swift */,
 				638201E11C49FDBE005CF368 /* Game.swift */,
 				638201CB1C49F1C5005CF368 /* Assets.xcassets */,
 				638201E01C49FB2B005CF368 /* Images */,
@@ -168,6 +171,7 @@
 			files = (
 				638201C71C49F1C5005CF368 /* GameViewController.swift in Sources */,
 				638201E21C49FDBE005CF368 /* Game.swift in Sources */,
+				63AE9AF11C4B018100FC187D /* UsersTableViewController.swift in Sources */,
 				638201C51C49F1C5005CF368 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +322,7 @@
 				638201D51C49F1C5005CF368 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
