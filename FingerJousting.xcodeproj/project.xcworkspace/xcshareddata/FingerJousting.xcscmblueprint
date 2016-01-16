@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1600A1ACF9CD1031731ABF23436C6BBD5B72C042",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1600A1ACF9CD1031731ABF23436C6BBD5B72C042" : 0,
+    "01C4019DAB2F13C7FB458F088D0A991884C46F1A" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "87AB0577-2AEF-4C70-9BA5-77BA7DA62BC1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1600A1ACF9CD1031731ABF23436C6BBD5B72C042" : "FingerJousting\/",
+    "01C4019DAB2F13C7FB458F088D0A991884C46F1A" : "..\/socket.io"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "FingerJousting",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "FingerJousting.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nuclearace\/Socket.IO-Client-Swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "01C4019DAB2F13C7FB458F088D0A991884C46F1A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/David-Wolgemuth\/FingerJousting.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1600A1ACF9CD1031731ABF23436C6BBD5B72C042"
+    }
+  ]
+}
