@@ -36,6 +36,10 @@ class Connection
         
     }
     
+    func requestGame(withUser user: String) {
+        socket?.emit("requestGame", user)
+    }
+    
     func getAllUsers(controller: UsersController) {
         socket?.emit("all-users")
         socket?.on("all-users") { data, ack in
