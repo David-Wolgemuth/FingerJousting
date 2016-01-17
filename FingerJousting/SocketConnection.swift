@@ -12,7 +12,11 @@ protocol UsersController
 {
     func usersArrayDidFill()
     func requestReceived(fromUser user: String)
-    func gameDidStart(gameID: String)
+    func gameDidStart(gameID: String, playersTurn: Bool)
+}
+protocol GameSocket
+{
+    func gameBoardReceived(board: [Int])
 }
 
 class Connection
@@ -48,8 +52,17 @@ class Connection
             controller.requestReceived(fromUser: user)
         }
         socket?.on("start-game") { data, ack in
-            let id = data[0] as! String
-            controller.gameDidStart(id)
+            let info = data[0] as! [AnyObject]
+            let id = info[0] as! String
+            let turn = info[1] as! Bool
+            controller.gameDidStart(id, playersTurn: turn)
+        }
+    }
+    func waitForGameBoard(controller: GameSocket)
+    {
+        socket?.on("game-board") { data, ack in
+            let board = data[0] as! [Int]
+            controller.gameBoardReceived(board)
         }
     }
     func getAllUsers(controller: UsersController)
@@ -65,7 +78,7 @@ class Connection
         self.allUsers = data[0] as! [String]
     }
     func sendToServer(GameMoves move: [Int]) {
-        socket?.emit("ToServer", move)
+        socket?.emit("game-move", move)
     }
     func sendResponseToInvitation(response: Bool)
     {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameViewController: UIViewController
+class GameViewController: UIViewController, GameSocket
 {
     var game: Game?
     
@@ -19,6 +19,7 @@ class GameViewController: UIViewController
     {
         setImages()
         setButtonColors()
+        Connection.sharedInstance.waitForGameBoard(self)
     }
     func setImages()
     {
@@ -39,12 +40,19 @@ class GameViewController: UIViewController
         game!.showValidMoves()
         setButtonColors()
         if game!.currentMove.count == 2 {
+            Connection.sharedInstance.sendToServer(GameMoves: (game?.currentMove)!)
             game!.currentMove = []
-            game!.randomGameBoard()
+            game?.playersTurn = false
             game!.showValidMoves()
             setButtonColors()
-            setImages()
         }
+    }
+    func gameBoardReceived(board: [Int])
+    {
+        game?.gameBoard = board
+        setImages()
+        game?.showValidMoves()
+        setButtonColors()
     }
     func setButtonColors()
     {

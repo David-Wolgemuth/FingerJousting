@@ -17,8 +17,9 @@ class Game
     var validMoves = [Bool]()
     let gameID: String
     
-    init(id: String)
+    init(id: String, playersTurn: Bool)
     {
+        self.playersTurn = playersTurn
         gameID = id
         var images = [UIImage]()
         for i in 0...4 {
@@ -37,6 +38,9 @@ class Game
     func showValidMoves()
     {
         validMoves = [false, false, false, false]
+        if !playersTurn {
+            return
+        }
         if currentMove.count == 0 {
             if gameBoard[2] > 0 {
                 validMoves[2] = true
