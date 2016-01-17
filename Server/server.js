@@ -75,8 +75,52 @@ function createGame(socketA, socketB)
     games[id] = {};
     games[id].currentPlayer = socketA;
     games[id].reversedPlayer = socketB;
-    games[id][socketA] = [1, 1];
-    games[id][socketB] = [1, 1];
-    users[socketA].socket.emit("start-game", id);
-    users[socketB].socket.emit("start-game", id);
+    games[id].board = [1, 1, 1, 1];
+    games[id].sockets = [socketA, socketB];
+
+    users[socketA].socket.emit("start-game", [id, true]);
+    users[socketA].socket.on("game-move", function(data) {
+        updateGame(id, socketA, data);
+    })
+
+    users[socketB].socket.emit("start-game", [id, false]);
+    users[socketB].socket.on("game-move", function(data) {
+        updateGame(id, socketB, data);
+    })
+    
+}
+
+function updateGame(game, socketID, move) {
+    var toSelf = false;
+    var gameOver = false;
+    if (move == [0, 1] || move == [1, 0]) {
+        toSelf = true;
+    }
+
+    if (socketID == games[game].reversedPlayer) {
+        move[0] = 3 - move[0];
+        move[1] = 3 - move[1];
+    }
+
+    var board = games[game].board;
+
+    if (toSelf) {
+        board[move[1]] = board[move[0]] / 2;
+        board[move[0]] /= 2;
+    } else {
+        board[move[1]] += board[move[0]];
+    }
+
+    if (board[move[1]] >= 5) {
+        board[move[1]] = 0;
+    }
+
+    if (board[move[1]] >= 5 && board[move[0]] >= 5) {
+        gameOver = true;
+    }
+
+    console.log("updateGame", games[game].sockets);
+
+    users[games[game].sockets[0]].socket.emit("game-board", games[game].board);
+    users[games[game].sockets[1]].socket.emit("game-board", games[game].board);
 }
