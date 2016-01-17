@@ -11,8 +11,8 @@ import UIKit
 class Game
 {
     let images: [UIImage]
-    var gameBoard = [2, 0, 3, 4]
-    var playersTurn = true
+    var gameBoard = [1, 1, 1, 1]
+    var playersTurn = false
     var currentMove = [Int]()
     var validMoves = [Bool]()
     

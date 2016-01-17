@@ -10,7 +10,7 @@ import UIKit
 
 class GameViewController: UIViewController
 {
-    let game = Game()
+    var game = Game()
     
     @IBOutlet var Images: [UIImageView]!
     @IBOutlet var Buttons: [UIButton]!

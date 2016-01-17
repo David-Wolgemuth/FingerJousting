@@ -28,11 +28,27 @@ class UsersTableViewController: UITableViewController, UsersController
             let userName = alert.textFields![0].text!
             Connection.sharedInstance.sendToServer(userName: userName)
             Connection.sharedInstance.getAllUsers(self)
+            Connection.sharedInstance.waitForRequests(self)
         }
         alert.addTextFieldWithConfigurationHandler {
             (textField: UITextField!) -> Void in
         }
         alert.addAction(save)
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    func requestReceived(fromUser user: String)
+    {
+        let alert = UIAlertController(title: "Game Request", message: "Do You Want To Play Against \(user)", preferredStyle: .Alert)
+        let yes = UIAlertAction(title: "Yes!", style: .Default) {
+            (action: UIAlertAction) -> Void in
+            Connection.sharedInstance.sendResponseToInvitation(true)
+        }
+        let no = UIAlertAction(title: "No Thanks.", style: .Default) {
+            (action: UIAlertAction) -> Void in
+            Connection.sharedInstance.sendResponseToInvitation(false)
+        }
+        alert.addAction(yes)
+        alert.addAction(no)
         presentViewController(alert, animated: true, completion: nil)
     }
     @IBAction func refreshButtonPressed(sender: UIBarButtonItem)
@@ -42,6 +58,10 @@ class UsersTableViewController: UITableViewController, UsersController
     func usersArrayDidFill()
     {
         tableView.reloadData()
+    }
+    func gameDidStart(isPlayer1 player1: Bool)
+    {
+        
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
