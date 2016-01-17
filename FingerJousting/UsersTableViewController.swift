@@ -15,9 +15,12 @@ class UsersTableViewController: UITableViewController, UsersController, GameDele
         tableView.delegate = self
         tableView.dataSource = self
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool)
+    {
         super.viewDidAppear(animated)
-        askForUsernameAlert()
+        if Connection.sharedInstance.socket == nil {
+            askForUsernameAlert()
+        }
     }
     func askForUsernameAlert()
     {
