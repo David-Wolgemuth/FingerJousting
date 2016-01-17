@@ -41,6 +41,11 @@ class Connection
             print("Connected to Server")
         }
     }
+    func resetConnection()
+    {
+        socket?.disconnect()
+        connectToServer()
+    }
     func requestGame(withUser user: String) {
         socket?.emit("requestGame", user)
         

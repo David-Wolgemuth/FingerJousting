@@ -18,9 +18,7 @@ class UsersTableViewController: UITableViewController, UsersController, GameDele
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
-        if Connection.sharedInstance.socket == nil {
-            askForUsernameAlert()
-        }
+        askForUsernameAlert()
     }
     func askForUsernameAlert()
     {

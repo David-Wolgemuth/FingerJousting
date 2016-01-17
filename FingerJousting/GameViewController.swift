@@ -71,6 +71,7 @@ class GameViewController: UIViewController, GameSocket
     }
     func gameOver()
     {
+        Connection.sharedInstance.resetConnection()
         var won = "Lost"
         if game!.playersTurn {
             won = "Won"
