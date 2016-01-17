@@ -37,10 +37,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="NewGame" id="2WX-mE-pqM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uTI-XJ-9Gg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1127" y="50"/>
+            <point key="canvasLocation" x="1178" y="50"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">

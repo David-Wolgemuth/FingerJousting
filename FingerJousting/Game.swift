@@ -15,9 +15,11 @@ class Game
     var playersTurn = false
     var currentMove = [Int]()
     var validMoves = [Bool]()
+    let gameID: String
     
-    init()
+    init(id: String)
     {
+        gameID = id
         var images = [UIImage]()
         for i in 0...4 {
             let img = UIImage(named: "\(i)-fingers.png")!
