@@ -37,9 +37,6 @@ class Game
     }
     func showValidMoves()
     {
-        if !playersTurn {
-            return
-        }
         validMoves = [false, false, false, false]
         if !playersTurn {
             return
