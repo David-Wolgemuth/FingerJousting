@@ -17,19 +17,18 @@ io.sockets.on("connection", function(socket) {
     
     users[socket.id] = {"name": "", messages: []};
 
-    socket.on("ToServer", function(data) {
-        console.log(data);
-    });
-
     //  listens for username from iPhone
     socket.on("user-name", function(data) {
         users[socket.id].name = data;
+        users[socket.id].socket = socket;
         users_array = [];
         for (user in users) {
             users_array.push(users[user].name);
         }
         // io.sockets.emit("all-users", users_array);
     });
+
+    //  returns all users currently connected
     socket.on("all-users", function(data) {
         users_array = [];
         for (user in users) {
@@ -40,8 +39,17 @@ io.sockets.on("connection", function(socket) {
         socket.emit("all-users", users_array);
     });
 
+    //  requests another user for game
     socket.on("requestGame", function(data) {
-        console.log(data);
+        var otherSocket;
+        console.log(users);
+        for (user in users) {
+            if (users[user].name == data) {
+                otherSocket = user;
+                console.log(users[user].socket);
+                users[user].socket.emit("user-request", users[user].name);
+            }
+        }
     });
 
     socket.on("disconnect", function() {
