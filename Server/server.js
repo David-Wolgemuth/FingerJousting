@@ -26,6 +26,7 @@ io.sockets.on("connection", function(socket) {
         for (user in users) {
             users_array.push(users[user].name);
         }
+        io.sockets.emit("all-users", users_array);
     });
 
     //  returns all users currently connected
