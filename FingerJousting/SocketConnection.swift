@@ -10,9 +10,16 @@ import UIKit
 
 class Connection
 {
+    class var sharedInstance: Connection
+    {
+        struct Static
+        {
+            static let instance: Connection = Connection()
+        }
+        return Static.instance
+    }
     
     var socket: SocketIOClient?
-    static let sharedInstance = Connection()
     
     func connectToServer() {
         socket = SocketIOClient(socketURL: "localhost:8000")
@@ -22,13 +29,17 @@ class Connection
         }
     }
     
-    func sendToServer(move: [Int]) {
+    func sendToServer(GameMoves move: [Int]) {
         socket?.emit("ToServer", move)
     }
     
-    init()
+    func sendToServer(userName name: String) {
+        socket?.emit("user-name", name)
+    }
+    
+    private init()
     {
         connectToServer()
-        
+        print("Initin")
     }
 }
