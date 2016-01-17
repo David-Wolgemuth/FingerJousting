@@ -38,6 +38,7 @@ class Connection
     
     func requestGame(withUser user: String) {
         socket?.emit("requestGame", user)
+        
     }
     
     func getAllUsers(controller: UsersController) {
