@@ -9,6 +9,7 @@ var server = app.listen(8000, function() {
 });
 
 var users = {};
+var games = {};
 
 var io = require("socket.io").listen(server);
 io.sockets.on("connection", function(socket) {
@@ -25,7 +26,6 @@ io.sockets.on("connection", function(socket) {
         for (user in users) {
             users_array.push(users[user].name);
         }
-        // io.sockets.emit("all-users", users_array);
     });
 
     //  returns all users currently connected
@@ -42,15 +42,21 @@ io.sockets.on("connection", function(socket) {
     //  requests another user for game
     socket.on("requestGame", function(data) {
         var otherSocket;
-        console.log(users);
         for (user in users) {
             if (users[user].name == data) {
                 otherSocket = user;
-                console.log(users[user].socket);
-                users[user].socket.emit("user-request", users[user].name);
             }
         }
+        users[otherSocket].socket.emit("user-request", users[socket.id].name);
+        users[otherSocket].socket.on("response", function(data) {
+            if (data) {
+                createGame(socket.id, otherSocket);
+            } else {
+                socket.emit("game-denied");
+            }
+        })
     });
+
 
     socket.on("disconnect", function() {
         console.log(socket.id, "disconnected");
@@ -62,3 +68,14 @@ io.sockets.on("connection", function(socket) {
         io.sockets.emit("all-users", users_array); 
     });
 });
+
+function createGame(socketA, socketB) 
+{
+    var id = socketA + socketB;
+    games[id].currentPlayer = socketA;
+    games[id].reversedPlayer = socketB;
+    games[id][socketA] = [1, 1];
+    games[id][socketB] = [1, 1];
+    users[socketA].socket.emit("start-game", id);
+    users[socketB].socket.emit("start-game", id);
+}
