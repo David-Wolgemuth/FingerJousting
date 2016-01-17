@@ -13,19 +13,19 @@ var users = {};
 var io = require("socket.io").listen(server);
 io.sockets.on("connection", function(socket) {
 
-	console.log(socket.id);
+    console.log(socket.id);
     
     users[socket.id] = {"name": "", messages: []};
 
     socket.on("ToServer", function(data) {
-    	console.log(data);
-    })
+        console.log(data);
+    });
 
     //  listens for username from iPhone
     socket.on("user-name", function(data) {
-    	console.log("username", data);
+        console.log("username", data);
         users[socket.id].name = data;
-        console.log("usersA", users)
+        console.log("usersA", users);
         users_array = [];
         for (user in users) {
             users_array.push(users[user].name);
@@ -33,10 +33,12 @@ io.sockets.on("connection", function(socket) {
         // io.sockets.emit("all-users", users_array);
     });
     socket.on("all-users", function(data) {
-		console.log("alluser");
+        console.log("alluser");
         users_array = [];
         for (user in users) {
-            users_array.push(users[user].name);
+            if (user != socket.id) {
+                users_array.push(users[user].name);
+            }
         }
         console.log(users_array)
         console.log("usersB", users)
@@ -44,7 +46,7 @@ io.sockets.on("connection", function(socket) {
     });
 
     socket.on("disconnect", function() {
-    	console.log(socket.id, "disconnected");
+        console.log(socket.id, "disconnected");
         delete users[socket.id];
         users_array = [];
         for (user in users) {
