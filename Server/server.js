@@ -23,9 +23,7 @@ io.sockets.on("connection", function(socket) {
 
     //  listens for username from iPhone
     socket.on("user-name", function(data) {
-        console.log("username", data);
         users[socket.id].name = data;
-        console.log("usersA", users);
         users_array = [];
         for (user in users) {
             users_array.push(users[user].name);
@@ -33,16 +31,17 @@ io.sockets.on("connection", function(socket) {
         // io.sockets.emit("all-users", users_array);
     });
     socket.on("all-users", function(data) {
-        console.log("alluser");
         users_array = [];
         for (user in users) {
             if (user != socket.id) {
                 users_array.push(users[user].name);
             }
         }
-        console.log(users_array)
-        console.log("usersB", users)
         socket.emit("all-users", users_array);
+    });
+
+    socket.on("requestGame", function(data) {
+        console.log(data);
     });
 
     socket.on("disconnect", function() {

@@ -55,6 +55,7 @@ class UsersTableViewController: UITableViewController, UsersController
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        print(Connection.sharedInstance.allUsers[indexPath.row])
+        let username = Connection.sharedInstance.allUsers[indexPath.row]
+        Connection.sharedInstance.requestGame(withUser: username)
     }
 }
