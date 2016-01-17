@@ -35,7 +35,7 @@ class Connection
     var allUsers = [String]()
     
     func connectToServer() {
-        socket = SocketIOClient(socketURL: "Eugenes-MacBook-Pro.local:8000")
+        socket = SocketIOClient(socketURL: "https://quiet-journey-7471.herokuapp.com")
         socket?.connect()
         socket?.on("connect") { data, ack in
             print("Connected to Server")
