@@ -42,7 +42,6 @@ class GameViewController: UIViewController, GameSocket
         if game!.currentMove.count == 2 {
             Connection.sharedInstance.sendToServer(GameMoves: (game?.currentMove)!)
             game!.currentMove = []
-            game?.playersTurn = false
             game!.showValidMoves()
             setButtonColors()
         }
