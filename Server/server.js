@@ -93,7 +93,8 @@ function createGame(socketA, socketB)
 function updateGame(game, socketID, move) {
     var toSelf = false;
     var gameOver = false;
-    if (move == [0, 1] || move == [1, 0]) {
+    
+    if (move[0] + move[1] == 5) {
         toSelf = true;
     }
 
@@ -105,7 +106,7 @@ function updateGame(game, socketID, move) {
     var board = games[game].board;
 
     if (toSelf) {
-        board[move[1]] = board[move[0]] / 2;
+        board[move[1]] = (board[move[0]] / 2);
         board[move[0]] /= 2;
     } else {
         board[move[1]] += board[move[0]];
@@ -115,12 +116,22 @@ function updateGame(game, socketID, move) {
         board[move[1]] = 0;
     }
 
-    if (board[move[1]] >= 5 && board[move[0]] >= 5) {
-        gameOver = true;
+    var socketA = games[game].sockets[0];
+    var socketB = games[game].sockets[1];
+
+    if (board[0] + board[1] == 0 && board[0] + board[1] >= 0) {
+        users[socketA].socket.emit("game-over")
+        users[socketB].socket.emit("game-over")
     }
 
-    console.log("updateGame", games[game].sockets);
-
-    users[games[game].sockets[0]].socket.emit("game-board", games[game].board);
-    users[games[game].sockets[1]].socket.emit("game-board", games[game].board);
+    if (socketA == games[game].reversedPlayer) {
+        users[socketA].socket.emit("game-board", games[game].board.slice(0).reverse());
+    } else {
+        users[socketA].socket.emit("game-board", games[game].board);    
+    }
+    if (socketB == games[game].reversedPlayer) {
+        users[socketB].socket.emit("game-board", games[game].board.slice(0).reverse());
+    } else {
+        users[socketB].socket.emit("game-board", games[game].board);    
+    }
 }
