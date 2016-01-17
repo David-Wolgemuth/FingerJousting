@@ -12,7 +12,7 @@ protocol UsersController
 {
     func usersArrayDidFill()
     func requestReceived(fromUser user: String)
-    func gameDidStart(isPlayer1 player1: Bool)
+    func gameDidStart(gameID: String)
 }
 
 class Connection
@@ -47,8 +47,8 @@ class Connection
             controller.requestReceived(fromUser: user)
         }
         socket?.on("start-game") { data, ack in
-            let playersTurn = data[0] as! Bool
-            controller.gameDidStart(isPlayer1: playersTurn)
+            let id = data[0] as! String
+            controller.gameDidStart(id)
         }
     }
     func getAllUsers(controller: UsersController)

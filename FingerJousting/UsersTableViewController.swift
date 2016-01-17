@@ -59,9 +59,16 @@ class UsersTableViewController: UITableViewController, UsersController
     {
         tableView.reloadData()
     }
-    func gameDidStart(isPlayer1 player1: Bool)
+    func gameDidStart(id: String)
     {
-        
+        performSegueWithIdentifier("NewGame", sender: id)
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == "NewGame" {
+            let controller = segue.destinationViewController as! GameViewController
+            controller.game = Game(id: sender as! String)
+        }
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
