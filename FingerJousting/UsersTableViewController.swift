@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UsersTableViewController: UITableViewController, UsersController
+class UsersTableViewController: UITableViewController, UsersController, GameDelegate
 {
     override func viewDidLoad()
     {
@@ -70,7 +70,12 @@ class UsersTableViewController: UITableViewController, UsersController
             let id = sender![0] as! String
             let turn = sender![1] as! Bool
             controller.game = Game(id: id, playersTurn: turn)
+            controller.delegate = self
         }
+    }
+    func returnToMenu()
+    {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {

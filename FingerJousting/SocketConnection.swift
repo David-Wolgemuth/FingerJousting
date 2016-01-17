@@ -17,6 +17,7 @@ protocol UsersController
 protocol GameSocket
 {
     func gameBoardReceived(board: [Int])
+    func gameOver()
 }
 
 class Connection
@@ -63,6 +64,9 @@ class Connection
         socket?.on("game-board") { data, ack in
             let board = data[0] as! [Int]
             controller.gameBoardReceived(board)
+        }
+        socket?.on("game-over") { data, ack in
+            controller.gameOver()
         }
     }
     func getAllUsers(controller: UsersController)

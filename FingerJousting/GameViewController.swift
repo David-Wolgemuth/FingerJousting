@@ -8,12 +8,19 @@
 
 import UIKit
 
+
+protocol GameDelegate
+{
+    func returnToMenu()
+}
+
 class GameViewController: UIViewController, GameSocket
 {
     var game: Game?
     
     @IBOutlet var Images: [UIImageView]!
     @IBOutlet var Buttons: [UIButton]!
+    var delegate: GameDelegate?
     
     override func viewDidLoad()
     {
@@ -34,6 +41,14 @@ class GameViewController: UIViewController, GameSocket
             return
         }
         let tile = sender.tag
+        if game?.currentMove.count == 1 {
+            if game?.currentMove[0] == tile {
+                game?.currentMove = []
+                game?.showValidMoves()
+                setButtonColors()
+                return
+            }
+        }
         if game!.validMoves[tile] {
             game!.currentMove.append(tile)
         }
@@ -42,7 +57,6 @@ class GameViewController: UIViewController, GameSocket
         if game!.currentMove.count == 2 {
             Connection.sharedInstance.sendToServer(GameMoves: (game?.currentMove)!)
             game!.currentMove = []
-            game?.playersTurn = false
             game!.showValidMoves()
             setButtonColors()
         }
@@ -54,6 +68,20 @@ class GameViewController: UIViewController, GameSocket
         game?.playersTurn = !game!.playersTurn
         game?.showValidMoves()
         setButtonColors()
+    }
+    func gameOver()
+    {
+        var won = "Lost"
+        if game!.playersTurn {
+            won = "Won"
+        }
+        let alert = UIAlertController(title: "Game Over", message: "You \(won)!", preferredStyle: .Alert)
+        let back = UIAlertAction(title: "Back To Menu", style: .Default) {
+            (action: UIAlertAction) -> Void in
+            self.delegate?.returnToMenu()
+        }
+        alert.addAction(back)
+        presentViewController(alert, animated: true, completion: nil)
     }
     func setButtonColors()
     {
