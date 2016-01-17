@@ -119,7 +119,8 @@ function updateGame(game, socketID, move) {
     var socketA = games[game].sockets[0];
     var socketB = games[game].sockets[1];
 
-    if (board[0] + board[1] == 0 && board[0] + board[1] >= 0) {
+    if (board[0] + board[1] == 0 || board[2] + board[3] == 0) {
+        games[game] = null;
         users[socketA].socket.emit("game-over")
         users[socketB].socket.emit("game-over")
     }
