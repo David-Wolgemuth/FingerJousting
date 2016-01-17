@@ -51,6 +51,7 @@ class GameViewController: UIViewController, GameSocket
     {
         game?.gameBoard = board
         setImages()
+        game?.playersTurn = !game!.playersTurn
         game?.showValidMoves()
         setButtonColors()
     }
