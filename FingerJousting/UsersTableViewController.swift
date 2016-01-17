@@ -10,6 +10,8 @@ import UIKit
 
 class UsersTableViewController: UITableViewController, UsersController, GameDelegate
 {
+    var userName: String?
+    
     override func viewDidLoad()
     {
         tableView.delegate = self
@@ -18,6 +20,7 @@ class UsersTableViewController: UITableViewController, UsersController, GameDele
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
+        Connection.sharedInstance.getAllUsers(self)
         askForUsernameAlert()
     }
     func askForUsernameAlert()
@@ -27,6 +30,7 @@ class UsersTableViewController: UITableViewController, UsersController, GameDele
         let save = UIAlertAction(title: "Save", style: .Default) {
             (action: UIAlertAction!) -> Void in
             let userName = alert.textFields![0].text!
+            self.userName = userName
             Connection.sharedInstance.sendToServer(userName: userName)
             Connection.sharedInstance.getAllUsers(self)
             Connection.sharedInstance.waitForRequests(self)
@@ -58,6 +62,12 @@ class UsersTableViewController: UITableViewController, UsersController, GameDele
     }
     func usersArrayDidFill()
     {
+        for i in 0..<Connection.sharedInstance.allUsers.count {
+            if Connection.sharedInstance.allUsers[i] == userName {
+                Connection.sharedInstance.allUsers.removeAtIndex(i)
+                break
+            }
+        }
         tableView.reloadData()
     }
     func gameDidStart(id: String, playersTurn: Bool)

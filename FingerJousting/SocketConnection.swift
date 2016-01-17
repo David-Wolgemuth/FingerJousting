@@ -53,7 +53,6 @@ class Connection
     func waitForRequests(controller: UsersController)
     {
         socket?.on("user-request") { data, ack in
-            print("Request Received")
             let user = data[0] as! String
             controller.requestReceived(fromUser: user)
         }
@@ -62,6 +61,10 @@ class Connection
             let id = info[0] as! String
             let turn = info[1] as! Bool
             controller.gameDidStart(id, playersTurn: turn)
+        }
+        socket?.on("all-users") { data, ack in
+            self.fillAllUsers(data)
+            controller.usersArrayDidFill()
         }
     }
     func waitForGameBoard(controller: GameSocket)
