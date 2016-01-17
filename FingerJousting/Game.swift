@@ -36,6 +36,9 @@ class Game
     }
     func showValidMoves()
     {
+        if !playersTurn {
+            return
+        }
         validMoves = [false, false, false, false]
         if currentMove.count == 0 {
             if gameBoard[2] > 0 {

@@ -72,6 +72,7 @@ io.sockets.on("connection", function(socket) {
 function createGame(socketA, socketB) 
 {
     var id = socketA + socketB;
+    games[id] = {};
     games[id].currentPlayer = socketA;
     games[id].reversedPlayer = socketB;
     games[id][socketA] = [1, 1];
