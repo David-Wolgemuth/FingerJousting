@@ -53,4 +53,8 @@ class UsersTableViewController: UITableViewController, UsersController
         cell?.textLabel?.text = Connection.sharedInstance.allUsers[indexPath.row]
         return cell!
     }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        print(Connection.sharedInstance.allUsers[indexPath.row])
+    }
 }

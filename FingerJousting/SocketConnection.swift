@@ -56,7 +56,6 @@ class Connection
     func sendToServer(userName name: String) {
         socket?.emit("user-name", name)
     }
-    
     private init()
     {
         connectToServer()
